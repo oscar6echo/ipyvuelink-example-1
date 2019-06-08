@@ -2,12 +2,12 @@
 // const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  publicPath: "./",
+  publicPath: './',
 
   configureWebpack: {
     output: {
-      filename: "[name].js",
-      chunkFilename: "[name].js"
+      filename: '[name].js',
+      chunkFilename: '[name].js'
     },
     performance: {
       maxEntrypointSize: 1400000,
@@ -45,13 +45,13 @@ module.exports = {
   },
 
   chainWebpack: config => {
-    if (config.plugins.has("extract-css")) {
-      const extractCSSPlugin = config.plugin("extract-css");
+    if (config.plugins.has('extract-css')) {
+      const extractCSSPlugin = config.plugin('extract-css');
       extractCSSPlugin &&
         extractCSSPlugin.tap(() => [
           {
-            filename: "[name].css",
-            chunkFilename: "[name].css"
+            filename: '[name].css',
+            chunkFilename: '[name].css'
           }
         ]);
     }
