@@ -2,11 +2,22 @@
 
 ## Specific
 
-This project is generated via [@vue/cli](https://cli.vuejs.org/) with some custom configuration:
+This project is generated via [@vue/cli](https://cli.vuejs.org/) with the following manually selected features:
 
-- extra dev packages:
-  - `@vue/eslint-config-prettier`
-  - `@vue/eslint-config-prettier`
+- Babel
+- Linter/Formatter
+- ESLint + Prettier
+- Lint on save
+- config in dedicated files
+
+Then the following extra configuration was applied:
+
+- add vuetify plugin:
+  - `vue add vuetify`
+  - with default options
+
+- add dev packages:
+  - `yarn add -D @vue/eslint-config-prettier`
 - [.eslintrc.js](.eslintrc.js) extra config - see comments
 - [.prettierrc.js](.prettierrc.js) extra config - see comments
 - [vue.config.js](.prettierrc.js) extra config - see comments
