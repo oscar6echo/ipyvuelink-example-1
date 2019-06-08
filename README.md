@@ -1,6 +1,6 @@
 # ipyvuelink-example-1
 
-## Specific
+## 1- Bootstapping
 
 This project is generated via [@vue/cli](https://cli.vuejs.org/) with the following manually selected features:
 
@@ -24,7 +24,7 @@ Then the following extra configuration was applied:
 
 _Tip_: With VSCode create a custom shortcut for doc formatting different from the standard `Alt+Shift+F` (say `Alt+Shift+G`) to avoid conflicts.
 
-## Project setup
+## 2 - Project setup
 
 ```
 yarn install
