@@ -2,36 +2,35 @@
   <v-app id="my-app">
     <v-container fluid class="debug-border">
       <v-layout flex row ma-1 :style="style.total" class="debug-border">
-        <v-flex :style="style.input">
+        <div :style="style.input">
           <v-text-field
-            v-model="extend[0]"
-            class="mr-2"
+            v-model="extent[0]"
+            class="mr-2 my-dense"
             hide-details
             single-line
             type="number"
             :step="config.step"
           ></v-text-field>
-        </v-flex>
+        </div>
 
-        <v-flex>
-          <v-range-slider
-            v-model="extend"
-            :max="config.max"
-            :min="config.min"
-            :step="config.step"
-          ></v-range-slider>
-        </v-flex>
+        <v-range-slider
+          class="my-dense"
+          v-model="extent"
+          :max="config.max"
+          :min="config.min"
+          :step="config.step"
+        ></v-range-slider>
 
-        <v-flex :style="style.input">
+        <div :style="style.input">
           <v-text-field
-            v-model="extend[1]"
-            class="ml-2"
+            v-model="extent[1]"
+            class="ml-2 my-dense"
             hide-details
             single-line
             type="number"
             :step="config.step"
           ></v-text-field>
-        </v-flex>
+        </div>
       </v-layout>
 
       <v-divider />
@@ -44,8 +43,8 @@
               <h4 class="title mb-0">Debug Area</h4>
               <h4 class="ma-1">Remove before build</h4>
               <div>
-                extend:
-                {{ extend }}
+                extent:
+                {{ extent }}
               </div>
               <div>
                 exposed:
@@ -67,10 +66,9 @@ export default {
     return {
       // inputs
       config: { max: 500, min: 100, step: 5 },
-      width_total: 400,
-      width_input: 70,
+      width: { total: 400, input: 70 },
       //local
-      extend: [],
+      extent: [],
       // exposed
       exposed: {}
       // technical
@@ -81,18 +79,18 @@ export default {
   computed: {
     style() {
       return {
-        total: `width: ${this.width_total}px`,
-        local: `width: ${this.width_input}px`
+        total: `width: ${this.width.total}px`,
+        input: `width: ${this.width.input}px`
       };
     }
   },
   watch: {
-    extend: {
+    extent: {
       handler: function() {
-        console.log(this.extend);
+        console.log(this.extent);
         this.exposed = {
-          min: this.extend[0],
-          max: this.extend[1]
+          min: this.extent[0],
+          max: this.extent[1]
         };
       },
       deep: true
@@ -107,7 +105,7 @@ export default {
   created() {
     const shift = (this.config.max - this.config.min) / 4;
 
-    this.extend = [this.config.min + shift, this.config.max - shift];
+    this.extent = [this.config.min + shift, this.config.max - shift];
   },
   mounted() {
     // document.querySelector("#app").removeAttribute("style");
@@ -123,8 +121,6 @@ export default {
 </script>
 
 <style scoped>
-#my-app {
-}
 /* remove before build */
 .debug-border {
   border: 1px solid red;
@@ -134,6 +130,17 @@ export default {
 /* scoped css */
 .container {
   padding: 0px;
+}
+.my-dense {
+  margin: 0px;
+  padding: 0px;
+}
+.v-input--range-slider >>> .v-messages {
+  /* background-color: red; */
+  display: none;
+}
+.v-text-field >>> {
+  font-size: 18px;
 }
 </style>
 
