@@ -1,6 +1,6 @@
 # ipyvuelink-example-1
 
-## 1- Bootstapping
+## 1 - Bootstapping
 
 This project is generated via [@vue/cli](https://cli.vuejs.org/) with the following manually selected features:
 
