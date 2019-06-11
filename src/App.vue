@@ -32,29 +32,27 @@
           ></v-text-field>
         </div>
       </v-layout>
-
-      <v-divider />
-
-      <!-- remove debug v-card before build -->
-      <v-card>
-        <v-card>
-          <v-card-title primary-title>
-            <div>
-              <h4 class="title mb-0">Debug Area</h4>
-              <h4 class="ma-1">Remove before build</h4>
-              <div>
-                extent:
-                {{ extent }}
-              </div>
-              <div>
-                exposed:
-                {{ exposed }}
-              </div>
-            </div>
-          </v-card-title>
-        </v-card>
-      </v-card>
     </v-container>
+
+    <!-- remove debug v-card before build -->
+    <v-card class="ma-2">
+      <v-card-title primary-title>
+        <div>
+          <h4 class="title mb-0">Debug Area</h4>
+          <h4 class="ma-1">Remove before build</h4>
+          <div>
+            config:
+            {{ config }}
+            <br />
+            width:
+            {{ width }}
+            <br />
+            exposed:
+            {{ exposed }}
+          </div>
+        </div>
+      </v-card-title>
+    </v-card>
   </v-app>
 </template>
 
@@ -121,6 +119,10 @@ export default {
 </script>
 
 <style scoped>
+#my-app {
+  background-color: white;
+}
+
 /* remove before build */
 .debug-border {
   border: 1px solid red;
