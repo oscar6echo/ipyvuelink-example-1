@@ -59,3 +59,9 @@ yarn lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Try it
+```
+$ ipyvuelink/cli install-dev
+$ jupyter notebook Example1.ipynb
+```
