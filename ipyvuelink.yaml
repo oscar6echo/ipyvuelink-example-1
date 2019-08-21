@@ -1,0 +1,13 @@
+extension_name: example1
+entry: App.vue
+
+# vuetify | bootstrapvue
+variant: vuetify
+
+components:
+  Example1:
+    properties:
+      # name: type.
+      # - name in snake_case
+      # - type: String | Integer | Float | Boolean | Object | Array | Any
+      exposed: Object

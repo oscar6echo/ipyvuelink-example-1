@@ -59,16 +59,16 @@
 <script>
 export default {
   name: 'App',
-
+  props: {
+    exposed: Object
+  },
   data() {
     return {
       // inputs
       config: { max: 500, min: 100, step: 5 },
       width: { total: 400, input: 70 },
       //local
-      extent: [],
-      // exposed
-      exposed: {}
+      extent: []
       // technical
       //   dataModel: null,
       //   dataAvailable: false
@@ -84,17 +84,18 @@ export default {
   },
   watch: {
     extent: {
-      handler: function() {
+      handler: function(v) {
         console.log(this.extent);
-        this.exposed = {
-          min: this.extent[0],
-          max: this.extent[1]
-        };
+        this.$emit('exposed', {
+          min: v[0],
+          max: v[1]
+        });
       },
       deep: true
     },
-    exposed: function() {
+    exposed: function(v) {
       console.log(this.exposed);
+      this.extent = [v.min, v.max];
       //   this.dataModel.set('exposed', this.exposed);
       //   this.dataModel.save_changes();
       //   this.dataModel.touch();
@@ -103,7 +104,10 @@ export default {
   created() {
     const shift = (this.config.max - this.config.min) / 4;
 
-    this.extent = [this.config.min + shift, this.config.max - shift];
+    this.extent = [
+      (this.exposed && this.exposed.min) || this.config.min + shift,
+      (this.exposed && this.exposed.max) || this.config.max - shift
+    ];
   },
   mounted() {
     // document.querySelector("#app").removeAttribute("style");
