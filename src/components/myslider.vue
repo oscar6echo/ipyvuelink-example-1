@@ -37,16 +37,15 @@
 <script>
 export default {
   name: 'MySlider',
+  props: {
+    exposed: Object
+  },
 
   data() {
     return {
-      // inputs
       config: { max: 500, min: 100, step: 5 },
       width: { total: 400, input: 70 },
-      //local
-      extent: [],
-      // exposed
-      exposed: {}
+      extent: []
     };
   },
   computed: {
@@ -59,31 +58,34 @@ export default {
   },
   watch: {
     extent: {
-      handler: function() {
-        console.log(this.extent);
-        this.exposed = {
-          min: this.extent[0],
-          max: this.extent[1]
-        };
+      handler: function(v) {
+        const obj = { min: v[0], max: v[1] };
+        console.log('up', obj);
+        this.$emit('exposed', obj);
+        this.updateParent();
       },
       deep: true
     },
-    exposed: function() {
-      console.log(this.exposed);
-      this.updateParent();
+    exposed: function(v) {
+      console.log('down', v);
+      this.extent = [v.min, v.max];
     }
   },
   created() {
     const shift = (this.config.max - this.config.min) / 4;
-    this.extent = [this.config.min + shift, this.config.max - shift];
+    this.extent = [
+      (this.exposed && this.exposed.min) || this.config.min + shift,
+      (this.exposed && this.exposed.max) || this.config.max - shift
+    ];
     this.updateParent();
   },
   methods: {
     updateParent() {
+      const exposed = { min: v[0], max: v[1] };
       const data = {
         config: this.config,
         width: this.width,
-        exposed: this.exposed
+        exposed: exposed
       };
       this.$emit('update', data);
     }
