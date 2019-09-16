@@ -62,7 +62,7 @@ export default {
         const obj = { min: v[0], max: v[1] };
         console.log('up', obj);
         this.$emit('exposed', obj);
-        this.updateParent();
+        this.updateDebugCard(); // remove after debug
       },
       deep: true
     },
@@ -77,11 +77,12 @@ export default {
       (this.exposed && this.exposed.min) || this.config.min + shift,
       (this.exposed && this.exposed.max) || this.config.max - shift
     ];
-    this.updateParent();
+    this.updateDebugCard(); // remove after debug
   },
   methods: {
-    updateParent() {
-      const exposed = { min: v[0], max: v[1] };
+    // remove after debug
+    updateDebugCard() {
+      const exposed = { min: this.extent[0], max: this.extent[1] };
       const data = {
         config: this.config,
         width: this.width,
@@ -94,7 +95,7 @@ export default {
 </script>
 
 <style scoped>
-/* remove before build */
+/* remove after debug */
 .debug-border {
   border: 1px solid red;
 }
