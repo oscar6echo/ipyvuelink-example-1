@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="debug-border">
+  <v-container fluid class="debug-border myslider no-padding">
     <v-layout flex row ma-1 :style="style.total" class="debug-border">
       <div :style="style.input">
         <v-text-field
@@ -102,10 +102,17 @@ export default {
 
 /* override vuetify defaults in the context of standalone ipywidgets */
 /* scoped css */
-.container {
-  padding: 0px;
+/*.container {*/
+/*  padding: 0px;*/
+/*}*/
+
+/* In the Jupyter context the class container is renamed to v-container (this is the only class that is renamed). Also,
+ * all selectors are prefixed with .vuetify-styles. Create a more specific selector than the selector used in the
+ * Jupyter context (.vuetify-styles .v-container), without using container, to apply our properties */
+.myslider.no-padding {
+  padding: 0;
 }
-.my-dense {
+.myslider .my-dense {
   margin: 0px;
   padding: 0px;
 }
@@ -113,7 +120,17 @@ export default {
   /* background-color: red; */
   display: none;
 }
-.v-text-field >>> {
+.myslider .v-text-field >>> {
   font-size: 18px;
+}
+</style>
+
+<style>
+/* override vuetify defaults in the context of standalone ipywidgets */
+/* global css */
+.application--wrap,
+div.vuetify-styles div.application--wrap {
+  flex: 0;
+  min-height: 0;
 }
 </style>

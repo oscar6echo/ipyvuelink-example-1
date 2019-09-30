@@ -50,12 +50,3 @@ export default {
   background-color: white;
 }
 </style>
-
-<style>
-/* override vuetify defaults in the context of standalone ipywidgets */
-/* global css */
-.application--wrap {
-  flex: 0;
-  min-height: 0;
-}
-</style>
