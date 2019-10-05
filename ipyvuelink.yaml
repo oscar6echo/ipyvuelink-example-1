@@ -3,7 +3,7 @@ extension_name: example1b
 entry: components/myslider.vue
 
 # vuetify | bootstrapvue
-variant: vuetify
+component_library_used: vuetify
 
 components:
   Example1b:

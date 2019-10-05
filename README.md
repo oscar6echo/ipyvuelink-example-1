@@ -17,6 +17,9 @@ Then the following extra configuration was applied:
 - add vuetify plugin:
   - `vue add vuetify` with default options
 
+- remove vuetify-loader:
+  - `yarn remove vuetify-loader`
+
 - add dev packages `yarn add -D xxx`:
     - @vue/eslint-config-prettier
 
@@ -87,13 +90,11 @@ yarn serve
 
 # TERMINAL 2
 # ipyvuelink cli one time commands
-ipyvuelink/cli install-dev
-ipyvuelink/cli watch
+ipyvuelink/cli dev-install-extension
+ipyvuelink/cli watch-vue-project
 
 # TERMINAL 3
-# ipyvuelink repeat commands
-# re-run each time you changed the vue component
-ipyvuelink/cli build-lib
+ipyvuelink/cli watch-extension
 
 # TERMINAL 4
 # launch notebook
