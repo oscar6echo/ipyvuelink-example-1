@@ -38,7 +38,7 @@
 export default {
   name: 'MySlider',
   props: {
-    exposed: Object
+    extrema: Object
   },
 
   data() {
@@ -61,12 +61,12 @@ export default {
       handler: function(v) {
         const obj = { min: v[0], max: v[1] };
         console.log('up', obj);
-        this.$emit('exposed', obj);
+        this.$emit('extrema', obj);
         this.updateDebugCard(); // remove after debug
       },
       deep: true
     },
-    exposed: function(v) {
+    extrema: function(v) {
       console.log('down', v);
       this.extent = [v.min, v.max];
     }
@@ -74,19 +74,19 @@ export default {
   created() {
     const shift = (this.config.max - this.config.min) / 4;
     this.extent = [
-      (this.exposed && this.exposed.min) || this.config.min + shift,
-      (this.exposed && this.exposed.max) || this.config.max - shift
+      (this.extrema && this.extrema.min) || this.config.min + shift,
+      (this.extrema && this.extrema.max) || this.config.max - shift
     ];
     this.updateDebugCard(); // remove after debug
   },
   methods: {
     // remove after debug
     updateDebugCard() {
-      const exposed = { min: this.extent[0], max: this.extent[1] };
+      const extrema = { min: this.extent[0], max: this.extent[1] };
       const data = {
         config: this.config,
         width: this.width,
-        exposed: exposed
+        extrema: extrema
       };
       this.$emit('update', data);
     }

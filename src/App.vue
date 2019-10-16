@@ -1,6 +1,6 @@
 <template>
   <v-app id="my-app">
-    <MySlider @update="compData = $event" />
+    <SliderMinMax @update="compData = $event" />
 
     <!-- remove debug v-card before build -->
     <v-card class="ma-2">
@@ -15,8 +15,8 @@
             width:
             {{ compData.width }}
             <br />
-            exposed:
-            {{ compData.exposed }}
+            extrema:
+            {{ compData.extrema }}
           </div>
         </div>
       </v-card-title>
@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import MySlider from './components/myslider';
+import SliderMinMax from './components/slider-min-max';
 
 export default {
   name: 'App',
   components: {
-    MySlider
+    SliderMinMax
   },
 
   data() {
@@ -38,7 +38,7 @@ export default {
       compData: {
         config: {},
         width: {},
-        exposed: {}
+        extrema: {}
       }
     };
   }

@@ -1,14 +1,14 @@
 
-extension_name: example1b
-entry: components/myslider.vue
+extension_name: sliderminmax
+entry: components/slider-min-max.vue
 
 # vuetify | bootstrapvue
 component_library_used: vuetify
 
 components:
-  Example1b:
+  Slider2M:
     properties:
       # name: type.
       # - name in snake_case
       # - type: String | Integer | Float | Boolean | Object | Array | Any
-      exposed: Object
+      extrema: Object
