@@ -1,0 +1,14 @@
+
+extension_name: example1b
+entry: components/myslider.vue
+
+# vuetify | bootstrapvue
+component_library_used: vuetify
+
+components:
+  Example1b:
+    properties:
+      # name: type.
+      # - name in snake_case
+      # - type: String | Integer | Float | Boolean | Object | Array | Any
+      exposed: Object

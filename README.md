@@ -17,6 +17,9 @@ Then the following extra configuration was applied:
 - add vuetify plugin:
   - `vue add vuetify` with default options
 
+- remove vuetify-loader:
+  - `yarn remove vuetify-loader`
+
 - add dev packages `yarn add -D xxx`:
     - @vue/eslint-config-prettier
 
@@ -59,3 +62,47 @@ yarn lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## 2 - Use ipyvuelink
+
+Cf. [ipyvuelink repo](https://github.com/mariobuikhuizen/ipyvuelink)
+
+### 1 - Get ipyvuelink
+
+In terminal:
+
+```bash
+# first download
+git submodule add https://github.com/mariobuikhuizen/ipyvuelink.git
+
+# after a git clone
+git submodule update --init
+```
+
+### 1 - Develop
+
+You need several terminals:
+
+```bash
+# TERMINAL 1
+# regular vue dev
+yarn serve
+
+# TERMINAL 2
+# ipyvuelink cli one time commands
+ipyvuelink/cli dev-install-extension
+ipyvuelink/cli watch-vue-project
+
+# TERMINAL 3
+ipyvuelink/cli watch-extension
+
+# TERMINAL 4
+# launch notebook
+jupyter notebook
+
+# TERMINAL 5
+# launch jupyterlab
+jupyterlab --watch
+# DOES NOT WORK
+```
+
